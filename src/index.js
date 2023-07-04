@@ -1,9 +1,14 @@
 import {cardMaker} from "./cards"
+import { translateToDOM } from "./dom";
 
-console.log(cardMaker);
 
 const btn = document.querySelector('button')
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const titleName = document.querySelector('input#title').value
+    const titleInput = document.querySelector('input#title')
+    const titleName = titleInput.value
+    titleInput.value = ''
+    const obj = cardMaker(titleName);
+    const DOMCard = translateToDOM(obj)
+    document.body.appendChild(DOMCard)
 })
