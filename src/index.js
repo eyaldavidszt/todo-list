@@ -2,6 +2,16 @@ import {cardMaker} from "./cards"
 import { translateToDOM } from "./dom";
 import './static/style.css'
 
+//dynamically create a select menu when pageLoad and when new list is made, of possible lists. 
+/*const selectListElement = document.createElement('select');
+what else... 
+hmm. 
+well.
+there needs to be some function that iterates over an existing list array and appends options to a select element. 
+
+
+*/
+
 
 function processCardFormInput(event) {
     //makes card object from form input using cardMaker function 
