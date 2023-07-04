@@ -1,16 +1,17 @@
-import {cardMaker} from "./cards"
+import { cardMaker } from "./cards"
 import { translateToDOM } from "./dom";
+import { totalLists, listMaker } from "./lists";
 import './static/style.css'
 
-//dynamically create a select menu when pageLoad and when new list is made, of possible lists. 
-/*const selectListElement = document.createElement('select');
-what else... 
-hmm. 
-well.
-there needs to be some function that iterates over an existing list array and appends options to a select element. 
 
-
-*/
+//dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists. 
+const selectListElement = document.createElement('select')
+const defaultOption = document.createElement('option')
+defaultOption.innerHTML = 'Projects'
+selectListElement.appendChild(defaultOption)
+document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
+// what else... 
+// there needs to be some function that iterates over an existing list array and appends options to a select element. 
 
 
 function processCardFormInput(event) {
@@ -34,9 +35,11 @@ function processCardFormInput(event) {
 const makeCardBtn = document.querySelector('button.make-card-btn')
 makeCardBtn.addEventListener('click', processCardFormInput)
 
+
 //lists array where?
 const makeListBtn = document.querySelector('button.make-list-btn')
 makeListBtn.addEventListener('click', processListFormInput)
+
 
 function processListFormInput(event) {
     event.preventDefault()
@@ -45,9 +48,12 @@ function processListFormInput(event) {
     listInput.value = ''
     if (!listName) return
     //where's list object??
+    const listObj = listMaker(listName)
+    totalLists.push(listObj)
     const DOMList = document.createElement('div')
     DOMList.classList.add('list-wrapper')
     DOMList.innerHTML = `${listName}: `
     document.body.appendChild(DOMList)
 }
+
 
