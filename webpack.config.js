@@ -13,4 +13,12 @@ module.exports = {
     title: 'To do List',
     template: './src/template.html',
   })],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 };

@@ -1,5 +1,6 @@
 import {cardMaker} from "./cards"
 import { translateToDOM } from "./dom";
+import './static/style.css'
 
 
 const btn = document.querySelector('button')
