@@ -17,13 +17,14 @@ function processCardFormInput(event) {
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     const projects = document.querySelector('.list-wrapper')
     projects.appendChild(DOMCard)
+    // appropriate pick 
 }
 
 
 const makeCardBtn = document.querySelector('button.make-card-btn')
 makeCardBtn.addEventListener('click', processCardFormInput)
 
-
+//lists array where?
 const makeListBtn = document.querySelector('button.make-list-btn')
 makeListBtn.addEventListener('click', processListFormInput)
 
@@ -33,9 +34,10 @@ function processListFormInput(event) {
     const listName = listInput.value
     listInput.value = ''
     if (!listName) return
-    const newList = document.createElement('div')
-    newList.classList.add('list-wrapper')
-    newList.innerHTML = `${listName}: `
-    document.body.appendChild(newList)
+    //where's list object??
+    const DOMList = document.createElement('div')
+    DOMList.classList.add('list-wrapper')
+    DOMList.innerHTML = `${listName}: `
+    document.body.appendChild(DOMList)
 }
 
