@@ -1,0 +1,1 @@
+This is a to-do list project done to understand SOLID design principles and clean code in OOP! (former git directory completely deleted, had to reset whole project)
