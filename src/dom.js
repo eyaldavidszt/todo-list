@@ -9,6 +9,10 @@ export function translateListToDom(list) {
     const listWrapper = document.createElement('div')
     listWrapper.classList.add('list-wrapper')
     // listWrapper.classList.add(`list-wrapper-${}`)
+    //test code:
+    const newValue = parseInt(localStorage.getItem("myCat")) + 1;
+    localStorage.setItem("myCat", `${newValue}`);
+    //
     listWrapper.innerHTML = `${list.name}: `
     const btn = document.createElement('button')
     btn.innerHTML = 'delete list'
