@@ -8,6 +8,7 @@ export function translateCardToDOM(card) {
 export function translateListToDom(list) {
     const listWrapper = document.createElement('div')
     listWrapper.classList.add('list-wrapper')
+    // listWrapper.classList.add(`list-wrapper-${}`)
     listWrapper.innerHTML = `${list.name}: `
     const btn = document.createElement('button')
     btn.innerHTML = 'delete list'
@@ -16,6 +17,13 @@ export function translateListToDom(list) {
     })
     listWrapper.appendChild(btn)
     return listWrapper
+}
+
+
+export function translateListToOption(list) {
+    const content = list.name
+
+    return
 }
 
 

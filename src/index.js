@@ -3,6 +3,11 @@ import { translateCardToDOM, translateListToDom } from "./dom";
 import { totalLists, listMaker } from "./lists";
 import './static/style.css'
 
+    // test code:
+    //localStorage.setItem("myCat", '0');
+    //newValue = parseInt(localStorage.getItem("myCat")) + 1;
+    // localStorage.setItem("myCat", `${newValue}`);
+
 
 //dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists. 
 const selectListElement = document.createElement('select')
