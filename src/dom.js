@@ -12,14 +12,12 @@ export function translateListToDom(list) {
     const btn = document.createElement('button')
     btn.innerHTML = 'delete list'
     btn.addEventListener('click', () => {
-        deleteNode(listWrapper)
+        listWrapper.remove()
     })
     listWrapper.appendChild(btn)
     return listWrapper
-
 }
 
-function deleteNode(listWrapper) {
-    listWrapper.remove()
-}
-//what do i want the dom to look like...?
+
+//^should i identify in DOM each list category? if so, how?
+
