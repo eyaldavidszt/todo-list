@@ -1,5 +1,5 @@
 import { cardMaker } from "./cards"
-import { translateToDOM } from "./dom";
+import { translateCardToDOM, translateListToDom } from "./dom";
 import { totalLists, listMaker } from "./lists";
 import './static/style.css'
 
@@ -23,7 +23,7 @@ function processCardFormInput(event) {
     if (!titleName) return
     titleInput.value = ''
     const obj = cardMaker(titleName)
-    const DOMCard = translateToDOM(obj)
+    const DOMCard = translateCardToDOM(obj)
 
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     const projects = document.querySelector('.list-wrapper')
@@ -50,9 +50,7 @@ function processListFormInput(event) {
     //where's list object??
     const listObj = listMaker(listName)
     totalLists.push(listObj)
-    const DOMList = document.createElement('div')
-    DOMList.classList.add('list-wrapper')
-    DOMList.innerHTML = `${listName}: `
+    const DOMList = translateListToDom(listObj)
     document.body.appendChild(DOMList)
 }
 
