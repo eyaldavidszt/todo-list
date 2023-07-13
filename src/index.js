@@ -1,5 +1,5 @@
 import { cardMaker } from "./cards"
-import { translateCardToDOM, translateListToDom } from "./dom";
+import { translateCardToDOM, translateListToDOM } from "./dom";
 import { totalLists, listMaker } from "./lists";
 import './static/style.css'
 
@@ -28,12 +28,10 @@ function processCardFormInput(event) {
     const titleName = titleInput.value
     if (!titleName) return
     titleInput.value = ''
-    const obj = cardMaker(titleName)
-    const DOMCard = translateCardToDOM(obj)
-
+    const cardObj = cardMaker(titleName)
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     const projects = document.querySelector('.list-wrapper')
-    projects.appendChild(DOMCard)
+    projects.appendChild(cardObj.createCard)
     // appropriate pick 
 }
 
@@ -56,8 +54,7 @@ function processListFormInput(event) {
     //where's list object??
     const listObj = listMaker(listName)
     // totalLists.push(listObj) don't think this is smart code, need to store objects in localStorage, not global array
-    const DOMList = translateListToDom(listObj)
-    document.body.appendChild(DOMList)
+    document.body.appendChild(listObj.createList)
 }
 
 

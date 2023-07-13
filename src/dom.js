@@ -5,7 +5,7 @@ export function translateCardToDOM(card) {
     return cardWrapper
 }
 
-export function translateListToDom(list) {
+export function translateListToDOM(list) {
     const listWrapper = document.createElement('div')
     listWrapper.classList.add('list-wrapper')
     // listWrapper.classList.add(`list-wrapper-${}`)
@@ -26,7 +26,7 @@ export function translateListToDom(list) {
 
 export function translateListToOption(list) {
     const content = list.name
-
+    
     return
 }
 
