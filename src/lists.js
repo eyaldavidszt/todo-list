@@ -11,5 +11,5 @@ const domListMethodAdder = (state) => {
 }
 
 const localStorageMethodAdder = (state) => {
-    localStorage.setItem(state.name, 0)
+    appendToLS: localStorage.setItem(state.name, 0)
 }
