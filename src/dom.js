@@ -10,8 +10,8 @@ export function translateListToDOM(list) {
     listWrapper.classList.add('list-wrapper')
     // listWrapper.classList.add(`list-wrapper-${}`)
     //test code:
-    const newValue = parseInt(localStorage.getItem("myCat")) + 1;
-    localStorage.setItem("myCat", `${newValue}`);
+    // const newValue = parseInt(localStorage.getItem("myCat")) + 1;
+    // localStorage.setItem("myCat", `${newValue}`);
     //
     listWrapper.innerHTML = `${list.name}: `
     const btn = document.createElement('button')

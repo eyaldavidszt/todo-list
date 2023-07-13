@@ -4,10 +4,10 @@ import { totalLists, listMaker } from "./lists";
 import './static/style.css'
 
     // test code:
-    if (!localStorage.getItem('myCat'))
-    {
-        localStorage.setItem("myCat", '0');
-    }
+    // if (!localStorage.getItem('myCat'))
+    // {
+    //     localStorage.setItem("myCat", '0');
+    // }
 
 
 //dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists. 
@@ -53,6 +53,7 @@ function processListFormInput(event) {
     if (!listName) return
     //where's list object??
     const listObj = listMaker(listName)
+    listObj.appendToLS
     // totalLists.push(listObj) don't think this is smart code, need to store objects in localStorage, not global array
     document.body.appendChild(listObj.createList)
 }
