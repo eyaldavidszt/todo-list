@@ -1,19 +1,28 @@
-import { translateCardToDOM } from "./dom"
-
 export function cardMaker(title, description, dueDate, priority, status) {
-    let newCard = {title, description, dueDate, priority, status, updateTitle}
+    let newCard = {title, description, dueDate, priority, status, updateTitle, createElement, appendToLocal}
+
+
     function updateTitle(newName) {
         newCard.title = newName
     }
 
-    const returnedCard = Object.assign(newCard, domCardMethodAdder(newCard))
-    return returnedCard
 
-}
+    function createElement() {
+        const cardWrapper = document.createElement('div')
+        cardWrapper.classList.add('card-wrapper')
+        cardWrapper.innerHTML = `${newCard.title}`
+        return cardWrapper
+    }
 
-const domCardMethodAdder = (state) => {
-    return {createCard: translateCardToDOM(state)}
-    
+
+    function appendToLocal() {
+        return localStorage.setItem(newCard.title, 0)
+    }
+
+
+    return newCard
+
+
 }
 
 

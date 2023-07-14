@@ -1,15 +1,25 @@
-import { translateListToDOM } from "./dom"
 export function listMaker(name) {
-    const newList = {name}
-    const totalLists = []
-    const returnedList = Object.assign(newList, domListMethodAdder(newList), localStorageMethodAdder(newList))
-    return returnedList
-}
+    const newList = {name, createElement, appendToLocal}
 
-const domListMethodAdder = (state) => {
-    return {createList: translateListToDOM(state)}
-}
+    
+    function createElement() {
+        const listWrapper = document.createElement('div')
+        listWrapper.classList.add('list-wrapper')
+        listWrapper.innerHTML = `${newList.name}: `
+        const btn = document.createElement('button')
+        btn.innerHTML = 'delete list'
+        btn.addEventListener('click', () => {
+            listWrapper.remove()
+        })
+        listWrapper.appendChild(btn)
+        return listWrapper
+    }
 
-const localStorageMethodAdder = (state) => {
-    return {appendToLS: localStorage.setItem(state.name, 0)}
+
+    function appendToLocal() {
+        return localStorage.setItem(newList.name, 0)
+    }
+
+
+    return newList
 }
