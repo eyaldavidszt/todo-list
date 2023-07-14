@@ -1,5 +1,5 @@
 export function cardMaker(title, description, dueDate, priority, status) {
-    let newCard = {title, description, dueDate, priority, status, updateTitle, createElement, appendToLocal}
+    let newCard = {title, description, dueDate, priority, status, updateTitle, createElement}
 
 
     function updateTitle(newName) {
@@ -11,18 +11,29 @@ export function cardMaker(title, description, dueDate, priority, status) {
         const cardWrapper = document.createElement('div')
         cardWrapper.classList.add('card-wrapper')
         cardWrapper.innerHTML = `${newCard.title}`
+        appendToLocal()
         return cardWrapper
     }
 
 
     function appendToLocal() {
-        return localStorage.setItem(newCard.title, 0)
+        return localStorage.setItem(`${newCard.title} todo`, 0)
+    }
+
+
+    function removeFromLocal() {
+        return localStorage.removeItem(`${newCard.title} todo`)
+    }
+
+
+    function removeElement(item) {
+        item.remove()
+        removeFromLocal()
+        newCard = null
     }
 
 
     return newCard
-
-
 }
 
 

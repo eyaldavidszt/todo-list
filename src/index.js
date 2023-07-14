@@ -3,8 +3,10 @@ import { listMaker } from "./lists";
 import './static/style.css'
 
 
-//dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists. 
+//dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists.
+//options should be read from localStorage
 const selectListElement = document.createElement('select')
+selectListElement.classList.add('list-select')
 const defaultOption = document.createElement('option')
 defaultOption.innerHTML = 'Projects'
 selectListElement.appendChild(defaultOption)
@@ -26,10 +28,9 @@ function processCardFormInput(event) {
     if (!titleName) return
     titleInput.value = ''
     const cardObj = cardMaker(titleName)
-    cardObj.appendToLocal()
     //shouldn't append to body though! it should append to fitting container which would be dynamic
-    const projects = document.querySelector('.list-wrapper')
-    projects.appendChild(cardObj.createElement())
+    const parentCategory = document.querySelector('.list-wrapper')
+    parentCategory.appendChild(cardObj.createElement())
     // appropriate pick 
 }
 
@@ -41,7 +42,6 @@ function processListFormInput(event) {
     listInput.value = ''
     if (!listName) return
     const listObj = listMaker(listName)
-    listObj.appendToLocal()
     document.body.appendChild(listObj.createElement())
 }
 
