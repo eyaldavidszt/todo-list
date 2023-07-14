@@ -3,12 +3,30 @@ import { listMaker } from "./lists";
 import './static/style.css'
 
 
-//dynamically create a select menu when pageLoad and edit it when new list is made, of possible lists.
-//options should be read from localStorage
+// What should happen on page load?
+//read appropriate parent list of item from local storage... make object with it with cardMaker(localstorageparent, localstoragename, etc...) ok i can do that
+
+
+// iterate over local storage: 
+
+for (let i=0; i<localStorage.length; i++) {
+    let key = localStorage.key(i);
+    const testObject = JSON.parse(localStorage.getItem(key))
+    //if type is todo, cardMaker(testObject)
+    if (testObject['title']) {
+        console.log(testObject)
+        cardMaker(testObject).createElement() 
+    }
+    if (testObject['name']) {
+        listMaker(testObject)
+    }
+  }
+  
+
 const selectListElement = document.createElement('select')
 selectListElement.classList.add('list-select')
 const defaultOption = document.createElement('option')
-defaultOption.innerHTML = 'Projects'
+defaultOption.innerHTML = 'Project'
 selectListElement.appendChild(defaultOption)
 document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
 
@@ -29,16 +47,13 @@ function processCardFormInput(event) {
     titleInput.value = ''
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     //const parentCategory = value of select element
-    const parentValue = document.querySelector('select').value
-    const parents = document.querySelectorAll('.list-wrapper')
-    let parent
-    for (let item of parents) {
-        if (item.innerHTML.includes(parentValue)) {
-            parent = item
-        }
-    }
+    const parent = document.querySelector('select').value
     //
+    console.log(parent)
     const cardObj = cardMaker({title: titleName, parent})
+    if (localStorage.getItem(`${cardObj.title} todo`)) {
+        throw new Error('This todo already exists')
+    }
     cardObj.createElement()
 }
 
@@ -52,3 +67,6 @@ function processListFormInput(event) {
     const listObj = listMaker({name: listName})
     document.body.appendChild(listObj.createElement())
 }
+
+
+

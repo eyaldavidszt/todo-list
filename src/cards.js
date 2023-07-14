@@ -13,10 +13,6 @@ export function cardMaker({title, description, dueDate, priority, status, parent
 
 
     function createElement() {
-        //check local storage first.
-        if (localStorage.getItem(`${newCard.title} todo`)) {
-            throw new Error('This todo already exists')
-        }
         
         const cardWrapper = document.createElement('div')
         cardWrapper.classList.add('card-wrapper')
@@ -27,14 +23,28 @@ export function cardMaker({title, description, dueDate, priority, status, parent
             removeElement(cardWrapper)
         })
         cardWrapper.appendChild(btn)
+        //append other stuff, maybe in internal functions.
 
         appendToLocal()
-        newCard.parent.appendChild(cardWrapper)
+        const nodes = document.querySelectorAll('.list-wrapper')
+        let parentNode
+        for (let node of nodes) {
+            if (node.innerHTML.trim().includes(parent)) {
+                parentNode = node
+            }
+        }
+        console.log(parentNode)
+        parentNode.appendChild(cardWrapper)
     }
 
 
     function appendToLocal() {
-        return localStorage.setItem(`${newCard.title} todo`, 0)
+        return localStorage.setItem(`${newCard.title} todo`, JSON.stringify({
+            title: newCard.title,
+            parent: newCard.parent, 
+            description: newCard.description,
+
+        }))
     }
 
 
