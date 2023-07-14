@@ -1,5 +1,4 @@
 import { cardMaker } from "./cards"
-import { translateCardToDOM, translateListToDOM } from "./dom";
 import { listMaker } from "./lists";
 import './static/style.css'
 
@@ -10,6 +9,14 @@ const defaultOption = document.createElement('option')
 defaultOption.innerHTML = 'Projects'
 selectListElement.appendChild(defaultOption)
 document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
+
+
+const cardMakingBtn = document.querySelector('button.make-card-btn')
+cardMakingBtn.addEventListener('click', processCardFormInput)
+
+
+const makeListBtn = document.querySelector('button.make-list-btn')
+makeListBtn.addEventListener('click', processListFormInput)
 
 
 function processCardFormInput(event) {
@@ -25,14 +32,6 @@ function processCardFormInput(event) {
     projects.appendChild(cardObj.createElement())
     // appropriate pick 
 }
-
-
-const makeCardBtn = document.querySelector('button.make-card-btn')
-makeCardBtn.addEventListener('click', processCardFormInput)
-
-
-const makeListBtn = document.querySelector('button.make-list-btn')
-makeListBtn.addEventListener('click', processListFormInput)
 
 
 function processListFormInput(event) {
