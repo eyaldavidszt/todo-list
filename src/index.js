@@ -9,6 +9,13 @@ import './static/style.css'
 
 // iterate over local storage: 
 
+const selectListElement = document.createElement('select')
+selectListElement.classList.add('list-select')
+const defaultOption = document.createElement('option')
+defaultOption.innerHTML = 'Project'
+selectListElement.appendChild(defaultOption)
+document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
+
 for (let i=0; i<localStorage.length; i++) {
     let key = localStorage.key(i);
     const testObject = JSON.parse(localStorage.getItem(key))
@@ -18,17 +25,11 @@ for (let i=0; i<localStorage.length; i++) {
         cardMaker(testObject).createElement() 
     }
     if (testObject['name']) {
-        listMaker(testObject)
+        listMaker(testObject).createElement()
     }
   }
   
 
-const selectListElement = document.createElement('select')
-selectListElement.classList.add('list-select')
-const defaultOption = document.createElement('option')
-defaultOption.innerHTML = 'Project'
-selectListElement.appendChild(defaultOption)
-document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
 
 
 const cardMakingBtn = document.querySelector('button.make-card-btn')
@@ -65,7 +66,12 @@ function processListFormInput(event) {
     listInput.value = ''
     if (!listName) return
     const listObj = listMaker({name: listName})
-    document.body.appendChild(listObj.createElement())
+
+    if (localStorage.getItem(`${listObj.name} list`)) {
+        throw new Error('This list category already exists')
+    }
+
+    listObj.createElement()
 }
 
 

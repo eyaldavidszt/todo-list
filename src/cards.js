@@ -1,3 +1,5 @@
+import { listMaker } from "./lists"
+
 export function cardMaker({title, description, dueDate, priority, status, parent}) {
     let newCard = {
         title, parent,
@@ -34,6 +36,12 @@ export function cardMaker({title, description, dueDate, priority, status, parent
             }
         }
         console.log(parentNode)
+        if (!parentNode) {
+            if (localStorage.getItem(`${parent} list`)) {
+                parentNode = listMaker(parent).createElement()
+            }
+            else return    
+        }
         parentNode.appendChild(cardWrapper)
     }
 

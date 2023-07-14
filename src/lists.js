@@ -3,15 +3,11 @@ export function listMaker({name}) {
 
     
     function createElement() {
-        //check local storage first.
-        if (localStorage.getItem(`${newList.name} list`)) {
-            throw new Error('This list category already exists')
-        }
             
 
         const listWrapper = document.createElement('div')
         listWrapper.classList.add('list-wrapper')
-        listWrapper.innerHTML = `${newList.name}: `
+        listWrapper.innerHTML = `${newList.name}`
         const btn = document.createElement('button')
         btn.innerHTML = 'delete list'
         btn.addEventListener('click', () => {
@@ -21,7 +17,8 @@ export function listMaker({name}) {
 
         appendToLocal()
         createDOMOption()
-        return listWrapper
+        document.body.appendChild(listWrapper)
+        return 
     }
 
 
