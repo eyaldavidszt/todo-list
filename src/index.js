@@ -22,12 +22,12 @@ makeListBtn.addEventListener('click', processListFormInput)
 
 
 function processCardFormInput(event) {
-    event.preventDefault();
+    event.preventDefault()
     const titleInput = document.querySelector('input#task-title')
     const titleName = titleInput.value
     if (!titleName) return
     titleInput.value = ''
-    const cardObj = cardMaker(titleName)
+    const cardObj = cardMaker({title: titleName})
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     //const parentCategory = value of select element
     const parentCategory = document.querySelector('.list-wrapper')
@@ -42,6 +42,6 @@ function processListFormInput(event) {
     const listName = listInput.value
     listInput.value = ''
     if (!listName) return
-    const listObj = listMaker(listName)
+    const listObj = listMaker({name: listName})
     document.body.appendChild(listObj.createElement())
 }

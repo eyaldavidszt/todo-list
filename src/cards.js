@@ -1,5 +1,9 @@
-export function cardMaker(title, description, dueDate, priority, status) {
-    let newCard = {title, description, dueDate, priority, status, updateTitle, createElement}
+export function cardMaker({title, description, dueDate, priority, status, }) {
+    let newCard = {
+        title, description, dueDate, 
+        priority, status, 
+        updateTitle, createElement
+    }
 
     
     function updateTitle(newName) {

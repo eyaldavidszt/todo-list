@@ -1,4 +1,4 @@
-export function listMaker(name) {
+export function listMaker({name}) {
     let newList = {name, createElement}
 
     
@@ -26,7 +26,7 @@ export function listMaker(name) {
 
 
     function appendToLocal() {
-        return localStorage.setItem(`${newList.name} list`, 1)
+        return localStorage.setItem(`${newList.name} list`, JSON.stringify({name: newList.name, }))
     }
     
     function removeFromLocal() {
