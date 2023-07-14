@@ -46,12 +46,9 @@ function processCardFormInput(event) {
     const titleName = titleInput.value
     if (!titleName) return
     titleInput.value = ''
-    //shouldn't append to body though! it should append to fitting container which would be dynamic
-    //const parentCategory = value of select element
     const parent = document.querySelector('select').value
-    //
     console.log(parent)
-    const cardObj = cardMaker({title: titleName, parent})
+    const cardObj = cardMaker({title: titleName, parent, })
     if (localStorage.getItem(`${cardObj.title} todo`)) {
         throw new Error('This todo already exists')
     }

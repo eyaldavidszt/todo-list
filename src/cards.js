@@ -35,7 +35,6 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                 parentNode = node
             }
         }
-        console.log(parentNode)
         if (!parentNode) {
             if (localStorage.getItem(`${parent} list`)) {
                 parentNode = listMaker(parent).createElement()
