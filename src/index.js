@@ -29,6 +29,7 @@ function processCardFormInput(event) {
     titleInput.value = ''
     const cardObj = cardMaker(titleName)
     //shouldn't append to body though! it should append to fitting container which would be dynamic
+    //const parentCategory = value of select element
     const parentCategory = document.querySelector('.list-wrapper')
     parentCategory.appendChild(cardObj.createElement())
     // appropriate pick 
@@ -44,5 +45,3 @@ function processListFormInput(event) {
     const listObj = listMaker(listName)
     document.body.appendChild(listObj.createElement())
 }
-
-
