@@ -27,12 +27,19 @@ function processCardFormInput(event) {
     const titleName = titleInput.value
     if (!titleName) return
     titleInput.value = ''
-    const cardObj = cardMaker({title: titleName})
     //shouldn't append to body though! it should append to fitting container which would be dynamic
     //const parentCategory = value of select element
-    const parentCategory = document.querySelector('.list-wrapper')
-    parentCategory.appendChild(cardObj.createElement())
-    // appropriate pick 
+    const parentValue = document.querySelector('select').value
+    const parents = document.querySelectorAll('.list-wrapper')
+    let parent
+    for (let item of parents) {
+        if (item.innerHTML.includes(parentValue)) {
+            parent = item
+        }
+    }
+    //
+    const cardObj = cardMaker({title: titleName, parent})
+    cardObj.createElement()
 }
 
 

@@ -1,6 +1,7 @@
-export function cardMaker({title, description, dueDate, priority, status, }) {
+export function cardMaker({title, description, dueDate, priority, status, parent}) {
     let newCard = {
-        title, description, dueDate, 
+        title, parent,
+        description, dueDate, 
         priority, status, 
         updateTitle, createElement
     }
@@ -28,7 +29,7 @@ export function cardMaker({title, description, dueDate, priority, status, }) {
         cardWrapper.appendChild(btn)
 
         appendToLocal()
-        return cardWrapper
+        newCard.parent.appendChild(cardWrapper)
     }
 
 
