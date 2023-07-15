@@ -54,8 +54,8 @@ makeListBtn.addEventListener('click', processListFormInput)
 
 
 function processCardFormInput(event) {
-    event.preventDefault()
-    document.querySelector('dialog').close()
+    // event.preventDefault()
+    // document.querySelector('dialog').close()
     const titleInput = document.querySelector('input#task-title')
     const titleName = titleInput.value
     if (!titleName) return
