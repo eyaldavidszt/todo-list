@@ -67,7 +67,8 @@ button.modal-open-btn {
 }
 
 button.modal-open-btn:hover {
-    filter: brightness(0.85);
+    background-color: rgb(255, 0, 0);
+
 }
 
 .header-title {
