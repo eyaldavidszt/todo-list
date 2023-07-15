@@ -27,24 +27,32 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         btn.addEventListener('click', () => {
             removeElement(cardWrapper)
         })
+        const parentDiv = document.createElement('div')
+        parentDiv.textContent = parent
+        parentDiv.classList.add('parent')
+        cardWrapper.appendChild(parentDiv)
         cardWrapper.appendChild(btn)
         //append other stuff, maybe in internal functions.
 
         appendToLocal()
-        const nodes = document.querySelectorAll('.list-wrapper')
-        let parentNode
-        for (let node of nodes) {
-            if (node.innerHTML.trim().includes(parent)) {
-                parentNode = node
-            }
-        }
-        if (!parentNode) {
-            if (localStorage.getItem(`${parent} list`)) {
-                parentNode = listMaker({name: parent}).createElement()
-            }
-            else return    
-        }
-        parentNode.appendChild(cardWrapper)
+        //
+        // const nodes = document.querySelectorAll('.list-wrapper')
+        // let parentNode
+        // for (let node of nodes) {
+        //     if (node.innerHTML.trim().includes(parent)) {
+        //         parentNode = node
+        //     }
+        // }
+        // if (!parentNode) {
+        //     if (localStorage.getItem(`${parent} list`)) {
+        //         parentNode = listMaker({name: parent}).createElement()
+        //     }
+        //     else return    
+        // }
+        // parentNode.appendChild(cardWrapper)
+        //
+        const todosWrapper = document.querySelector('.todos-wrapper')
+        todosWrapper.appendChild(cardWrapper)
     }
 
 

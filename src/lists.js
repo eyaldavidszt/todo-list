@@ -63,8 +63,18 @@ export function listMaker({name}) {
         }
     }
 
+    function removeDOMChildren() {
+        const allRelevants = document.querySelectorAll('.parent')
+        allRelevants.forEach(relevant => {
+            console.log({text: relevant.textContent, name: newList.name})
+            if (relevant.textContent == newList.name) {
+                relevant.closest('.card-wrapper').remove()
+            }
+        })
+    }
 
     function removeElement(item) {
+        removeDOMChildren()
         removeChildrenFromLocal()
         removeDOMOption()
         item.remove()
