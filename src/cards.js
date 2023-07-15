@@ -18,9 +18,12 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         
         const cardWrapper = document.createElement('div')
         cardWrapper.classList.add('card-wrapper')
-        cardWrapper.innerHTML = `${newCard.title}`
+        const titleWrapper = document.createElement('div')
+        titleWrapper.classList.add('task-title')
+        titleWrapper.innerHTML = `${newCard.title}`
+        cardWrapper.appendChild(titleWrapper)
         const btn = document.createElement('button')
-        btn.innerHTML = 'delete list'
+        btn.innerHTML = 'delete todo'
         btn.addEventListener('click', () => {
             removeElement(cardWrapper)
         })
