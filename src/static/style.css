@@ -33,3 +33,16 @@ input {
     font-size: 2rem;
 }
 
+img[alt="sidebar"] {
+    width: 25px;
+}
+
+
+.header {
+    display: flex;
+}
+
+
+.content-wrapper {
+    display: flex;
+}

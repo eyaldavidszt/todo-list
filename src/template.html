@@ -6,7 +6,6 @@
     <title>To-do List</title>
 </head>
 <body>
-    <h1>To do</h1>
     <dialog>
         <form method="dialog" class="todo-form">
             
@@ -18,34 +17,43 @@
         </form>
         <button data-close-modal>&times;</button>
     </dialog>
-    <button data-open-modal>+</button>
-        <form action="/" method="post">
-            
-            <label for="list-title">New List</label>
-            <input type="text" id="list-title" placeholder="new list" autocomplete="off">
-            <button class="make-list-btn">Create List</button>
-            
-        </form>
-    <div class="todos-wrapper">
-        <div class="card-wrapper">
-            <div class="task-title">
-                Task
-            </div>
-            <div class="due-date">
-                03/08/23
-            </div>
-            <div class="priority">
-                Important
-            </div>
-            <div class="parent">
+    <div class="header">
+        <button data-open-sidebar>
+            <img src="../src/static/menu.svg" alt="sidebar">
+        </button>
+        <button data-open-modal>+</button>
+        <div class="header-title">To Do</div>
+    </div>
+    
+    <div class="content-wrapper">
+        <div class="lists">
+            <form action="/" method="post">
+                
+                <label for="list-title">New List</label>
+                <input type="text" id="list-title" placeholder="new list" autocomplete="off">
+                <button class="make-list-btn">Create List</button>
+                
+            </form>
+            <div class="list-wrapper">
                 Project
             </div>
-            <button>delete todo</button>
         </div>
-    </div>
-    <div class="lists">
-        <div class="list-wrapper">
-            Project
+        <div class="todos-wrapper">
+            <div class="card-wrapper">
+                <div class="task-title">
+                    Task
+                </div>
+                <div class="due-date">
+                    03/08/23
+                </div>
+                <div class="priority">
+                    Important
+                </div>
+                <div class="parent">
+                    Project
+                </div>
+                <button>delete todo</button>
+            </div>
         </div>
     </div>
 </body>
