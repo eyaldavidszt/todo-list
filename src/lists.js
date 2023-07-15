@@ -27,9 +27,21 @@ export function listMaker({name}) {
     }
     
     function removeFromLocal() {
-        return localStorage.removeItem(`${newList.name} list`)
+        localStorage.removeItem(`${newList.name} list`)
     }
 
+    function removeChildrenFromLocal() {
+        let temp;
+        for (let i = 0; i < localStorage.length; i++) {
+            //now i have the value of each localstorage
+            temp = localStorage.getItem(localStorage.key(i))
+            temp = JSON.parse(temp)
+            if (temp.parent == newList.name) {
+                //remove
+                localStorage.removeItem(localStorage.key(i))
+            }
+        }
+    }
 
     function createDOMOption() {
         const option = document.createElement('option')
@@ -53,6 +65,7 @@ export function listMaker({name}) {
 
 
     function removeElement(item) {
+        removeChildrenFromLocal()
         removeDOMOption()
         item.remove()
         removeFromLocal()

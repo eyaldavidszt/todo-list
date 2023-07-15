@@ -40,7 +40,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         }
         if (!parentNode) {
             if (localStorage.getItem(`${parent} list`)) {
-                parentNode = listMaker(parent).createElement()
+                parentNode = listMaker({name: parent}).createElement()
             }
             else return    
         }
