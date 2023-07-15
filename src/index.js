@@ -17,6 +17,18 @@ selectListElement.appendChild(defaultOption)
 const todoForm = document.querySelector('.todo-form')
 todoForm.insertBefore(selectListElement, document.querySelector('button.make-card-btn'))
 
+const openDialogButton = document.querySelector("[data-open-modal]")
+openDialogButton.addEventListener('click', () => {
+    document.querySelector('dialog').showModal()
+})
+
+const closeDialogButton = document.querySelector("[data-close-modal")
+closeDialogButton.addEventListener('click', () => {
+    document.querySelector('dialog').close()
+})
+
+
+
 for (let i=0; i<localStorage.length; i++) {
     let key = localStorage.key(i);
     const testObject = JSON.parse(localStorage.getItem(key))
@@ -43,6 +55,7 @@ makeListBtn.addEventListener('click', processListFormInput)
 
 function processCardFormInput(event) {
     event.preventDefault()
+    document.querySelector('dialog').close()
     const titleInput = document.querySelector('input#task-title')
     const titleName = titleInput.value
     if (!titleName) return
