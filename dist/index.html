@@ -18,24 +18,23 @@
         <button data-close-modal>&times;</button>
     </dialog>
     <div class="header">
-        <button data-open-sidebar>
-            <img src="../src/static/menu.svg" alt="sidebar">
-        </button>
         <button data-open-modal>+</button>
         <div class="header-title">To Do</div>
     </div>
     
     <div class="content-wrapper">
-        <div class="lists">
-            <form action="/" method="post">
-                
-                <label for="list-title">New List</label>
-                <input type="text" id="list-title" placeholder="new list" autocomplete="off">
-                <button class="make-list-btn">Create List</button>
-                
-            </form>
-            <div class="list-wrapper">
-                Project
+        <div class="sidebar">
+            <div class="lists">
+                <form action="/" method="post">
+        
+                    <label for="list-title">New List</label>
+                    <input type="text" id="list-title" placeholder="new list" autocomplete="off">
+                    <button class="make-list-btn">Create List</button>
+        
+                </form>
+                <div class="list-wrapper">
+                    Project
+                </div>
             </div>
         </div>
         <div class="todos-wrapper">

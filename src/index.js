@@ -1,7 +1,6 @@
 import { cardMaker } from "./cards"
 import { listMaker } from "./lists"
 import './static/style.css'
-import './static/menu.svg'
 
 
 // What should happen on page load?

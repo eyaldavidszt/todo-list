@@ -10,7 +10,7 @@ html {
 
 
 .list-wrapper {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 
@@ -45,4 +45,22 @@ img[alt="sidebar"] {
 
 .content-wrapper {
     display: flex;
+}
+
+button {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 0.5rem 1rem;
+}
+
+.sidebar {
+    border: 1px solid black;
+    width: 300px;
+    height: 100svh;
+}
+
+
+.todos-wrapper {
+    flex: 1;
 }
