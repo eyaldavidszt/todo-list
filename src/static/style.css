@@ -48,7 +48,7 @@ img[alt="sidebar"] {
     grid-template-columns: 100px 1fr 100px;
     align-items: center;
     font-size: 1.5rem;
-    background-color: rgb(255, 136, 0);
+    background-color: rgba(255, 136, 0, 0.5);
     height: 100px;
 }
 
@@ -67,7 +67,7 @@ button.modal-open-btn {
 }
 
 button.modal-open-btn:hover {
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 1);
 
 }
 
