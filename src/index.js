@@ -14,7 +14,7 @@ selectListElement.classList.add('list-select')
 const defaultOption = document.createElement('option')
 defaultOption.innerHTML = 'Project'
 selectListElement.appendChild(defaultOption)
-document.body.insertBefore(selectListElement, document.querySelector('.list-wrapper'))
+document.body.insertBefore(selectListElement, document.querySelector('.lists'))
 
 for (let i=0; i<localStorage.length; i++) {
     let key = localStorage.key(i);

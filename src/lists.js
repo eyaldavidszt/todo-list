@@ -16,7 +16,8 @@ export function listMaker({name}) {
 
         appendToLocal()
         createDOMOption()
-        document.body.appendChild(listWrapper)
+        const lists = document.querySelector('.lists')
+        lists.appendChild(listWrapper)
         return 
     }
 
