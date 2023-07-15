@@ -18,15 +18,28 @@ const todoForm = document.querySelector('.todo-form')
 todoForm.insertBefore(selectListElement, document.querySelector('button.make-card-btn'))
 
 const openDialogButton = document.querySelector("[data-open-modal]")
+const dialog = document.querySelector('dialog')
 openDialogButton.addEventListener('click', () => {
-    document.querySelector('dialog').showModal()
+    dialog.showModal()
 })
 
 const closeDialogButton = document.querySelector("[data-close-modal")
 closeDialogButton.addEventListener('click', () => {
-    document.querySelector('dialog').close()
+    dialog.close()
 })
 
+dialog.addEventListener("click", e => {
+    const dialogDimensions = dialog.getBoundingClientRect()
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      dialog.close()
+    }
+  })
+  
 
 
 for (let i=0; i<localStorage.length; i++) {
