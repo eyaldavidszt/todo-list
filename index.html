@@ -12,13 +12,13 @@
             <label for="title">Todo Title</label>
             <input type="text" id="task-title" placeholder="title" autocomplete="off">
             
-            <button class='make-card-btn'>Create Task</button>
+            <button class='make-card-btn'>Create Todo</button>
             
         </form>
         <button data-close-modal>&times;</button>
     </dialog>
     <div class="header">
-        <button data-open-modal>+</button>
+        <button data-open-modal class="modal-open-btn">+</button>
         <div class="header-title">To Do</div>
     </div>
     
@@ -28,8 +28,8 @@
                 <form action="/" method="post">
         
                     <label for="list-title">New List</label>
-                    <input type="text" id="list-title" placeholder="new list" autocomplete="off">
-                    <button class="make-list-btn">Create List</button>
+                    <input type="text" id="list-title" placeholder="list name..." autocomplete="off">
+                    <button class="make-list-btn">Create</button>
         
                 </form>
                 <div class="list-wrapper">
