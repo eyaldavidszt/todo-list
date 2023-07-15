@@ -3,7 +3,6 @@ export function listMaker({name}) {
 
     
     function createElement() {
-            
 
         const listWrapper = document.createElement('div')
         listWrapper.classList.add('list-wrapper')
