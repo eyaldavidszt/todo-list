@@ -17,3 +17,12 @@ html {
 .card-wrapper {
     font-size: 1rem;
 }
+
+
+input {
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 1.1rem;
+}
