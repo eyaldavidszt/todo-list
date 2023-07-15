@@ -1,8 +1,13 @@
 /*style.css works*/
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
+dialog {
+    margin: auto;
+}
 
 html {
     font-family: 'Roboto';
@@ -39,7 +44,36 @@ img[alt="sidebar"] {
 
 
 .header {
+    display: grid;
+    grid-template-columns: 75px 1fr 75px;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: orange;
+    height: 100px;
+}
+
+button.modal-open-btn {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 100%;
+}
+
+button.modal-open-btn:hover {
+    filter: brightness(0.8);
+}
+
+.header-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 
@@ -57,10 +91,19 @@ button {
 .sidebar {
     border: 1px solid black;
     width: 300px;
-    height: 100svh;
+    min-height: 100svh;
 }
 
 
 .todos-wrapper {
     flex: 1;
+}
+
+input#list-title {
+    width: 150px;
+}
+
+
+.card-wrapper {
+    min-width: 150px;
 }
