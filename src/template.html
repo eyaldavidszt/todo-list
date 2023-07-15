@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>To do</h1>
-    <form action="/" method="post">
+    <form action="/" method="post" class="todo-form">
 
         <label for="title">Todo Title</label>
         <input type="text" id="task-title" placeholder="title" autocomplete="off">
@@ -15,7 +15,6 @@
         <button class='make-card-btn'>Create Task</button>
         
     </form>
-    <!--dynamically create another div like "projects" based on user input-->
     <form action="/" method="post">
 
         <label for="list-title">New List</label>
@@ -24,7 +23,6 @@
         
     </form>
     <div class="todos-wrapper">
-    
         <div class="card-wrapper">
             <div class="task-title">
                 Task
@@ -40,7 +38,6 @@
             </div>
             <button>delete todo</button>
         </div>
-    
     </div>
     <div class="lists">
         <div class="list-wrapper">
