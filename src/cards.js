@@ -18,11 +18,17 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         
         const cardWrapper = document.createElement('div')
         cardWrapper.classList.add('card-wrapper')
+        cardWrapper.classList.add(`${newCard.title}`)
         const titleWrapper = document.createElement('div')
         titleWrapper.classList.add('task-title')
         titleWrapper.innerHTML = `${newCard.title}`
-        cardWrapper.classList.add(`${newCard.title}`)
         cardWrapper.appendChild(titleWrapper)
+        //append date as well here:
+        const dateWrapper = document.createElement('div')
+        dateWrapper.classList.add('due-date')
+        dateWrapper.textContent = `${newCard.dueDate}`
+        cardWrapper.appendChild(dateWrapper)
+        //
         const btn = document.createElement('button')
         btn.classList.add('todo-delete-btn')
         btn.innerHTML = 'delete'
