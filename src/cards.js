@@ -88,7 +88,11 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                 editFormSubmit.setAttribute('class', 'edit-todo-btn')
                 editFormSubmit.innerHTML = 'submit'
                 editFormSubmit.addEventListener('click', () => {
-                    //function to process form and send it into editElement()
+                    //function to process form and send it into editElement() and then delete node of dialog
+                    const args = {}
+                    const newTitle = {title: document.querySelector('input#task-title-edit').value}
+                    args.push(newTitle)
+
                     
                 })
             editForm.appendChild(editFormLabel)
@@ -128,7 +132,10 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         todosWrapper.appendChild(cardWrapper)
     }
 
-    function editElement() {
+    function editElement(args) {
+        //edit the actual object newCard.
+        //find proper node by searching for one that has class=''newlistname''
+        //change it with inputs
         
     }
 
