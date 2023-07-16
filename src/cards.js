@@ -101,6 +101,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
             title: newCard.title,
             parent: newCard.parent, 
             description: newCard.description,
+            date: newCard.dueDate
 
         }))
     }
