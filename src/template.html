@@ -11,8 +11,13 @@
             
             <label for="task-title">Todo Title</label>
             <input type="text" id="task-title" placeholder="title" autocomplete="off">
-            <input type="date" id="task-date">
-            
+            <input type="date" id="task-date" aria-label="task date">
+            <label for="task-priority">Priority</label>
+            <select name="task-priority" id="task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
             <button class='make-card-btn'>Create Todo</button>
             
         </form>

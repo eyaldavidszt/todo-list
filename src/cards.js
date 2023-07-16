@@ -29,6 +29,10 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         dateWrapper.textContent = `${newCard.dueDate}`
         cardWrapper.appendChild(dateWrapper)
         //
+        const priorityWrapper = document.createElement('div')
+        priorityWrapper.classList.add('priority')
+        priorityWrapper.textContent = `${newCard.priority}`
+        cardWrapper.appendChild(priorityWrapper)
         const btn = document.createElement('button')
         btn.classList.add('todo-delete-btn')
         btn.innerHTML = 'delete'
@@ -47,12 +51,39 @@ export function cardMaker({title, description, dueDate, priority, status, parent
             //  create children for form:
                 const editFormLabel = document.createElement('label')
                 editFormLabel.setAttribute('for', 'task-title-edit')
+                editFormLabel.textContent = 'edit'
                 const editFormInput = document.createElement('input')
                 editFormInput.setAttribute('type', 'text')
                 editFormInput.setAttribute('id', 'task-title-edit')
                 editFormInput.setAttribute('placeholder', 'title')
                 editFormInput.setAttribute('autocomplete', 'off')
-                //add more inputs like date, importance
+                //add more inputs like date::::
+                const editFormDateInput = document.createElement('input')
+                editFormDateInput.setAttribute('type', 'date')
+                editFormDateInput.setAttribute('id', 'task-date-edit')
+                editFormDateInput.setAttribute('aria-label', 'task date')
+                //
+                //add more inputs like priority:::
+                const editFormPrioritySelect = document.createElement('select')
+                editFormPrioritySelect.setAttribute('id', 'task-priority-edit')
+                editFormPrioritySelect.setAttribute('name', 'task-priority-edit')
+                const editFormPrioritySelectLabel = document.createElement('label')
+                editFormPrioritySelectLabel.setAttribute('for', 'task-priority-edit')
+                editFormPrioritySelectLabel.innerHTML = 'Priority'
+                //3 options: 
+                    const optionLow = document.createElement('option')
+                    optionLow.value = 'low'
+                    optionLow.innerHTML = 'Low'
+                    editFormPrioritySelect.appendChild(optionLow)
+                    const optionMedium = document.createElement('option')
+                    optionMedium.value = 'medium'
+                    optionMedium.innerHTML = 'Medium'
+                    editFormPrioritySelect.appendChild(optionMedium)
+                    const optionHigh = document.createElement('option')
+                    optionHigh.value = 'high'
+                    optionHigh.innerHTML = 'High'
+                    editFormPrioritySelect.appendChild(optionHigh)
+                //
                 const editFormSubmit = document.createElement('button')
                 editFormSubmit.setAttribute('class', 'edit-todo-btn')
                 editFormSubmit.innerHTML = 'submit'
@@ -60,6 +91,12 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                     //function to process form and send it into editElement()
                     
                 })
+            editForm.appendChild(editFormLabel)
+            editForm.appendChild(editFormInput)
+            editForm.appendChild(editFormDateInput)
+            editForm.appendChild(editFormPrioritySelectLabel)
+            editForm.appendChild(editFormPrioritySelect)
+            editForm.appendChild(editFormSubmit)
 
             //
             editDialog.appendChild(editForm)
@@ -100,8 +137,8 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         return localStorage.setItem(`${newCard.title} todo`, JSON.stringify({
             title: newCard.title,
             parent: newCard.parent, 
-            description: newCard.description,
-            date: newCard.dueDate
+            dueDate: newCard.dueDate,
+            priority
 
         }))
     }

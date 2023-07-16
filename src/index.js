@@ -73,11 +73,13 @@ function processCardFormInput(event) {
     const titleName = titleInput.value
     const dateInput = document.querySelector('input#task-date')
     const date = dateInput.value
+    const priorityInput = document.querySelector('select#task-priority')
+    const priority = priorityInput.value
     if (!titleName) return
     titleInput.value = ''
-    const parent = document.querySelector('select').value
+    const parent = document.querySelector('.list-select').value
     console.log(parent)
-    const cardObj = cardMaker({title: titleName, parent, dueDate: date})
+    const cardObj = cardMaker({title: titleName, parent, dueDate: date, priority})
     if (localStorage.getItem(`${cardObj.title} todo`)) {
         throw new Error('This todo already exists')
     }
