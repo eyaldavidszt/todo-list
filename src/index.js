@@ -13,6 +13,8 @@ const selectListElement = document.createElement('select')
 selectListElement.classList.add('list-select')
 const defaultOption = document.createElement('option')
 defaultOption.innerHTML = 'Project'
+defaultOption.classList.add('parent-option')
+defaultOption.value = 'Project'
 selectListElement.appendChild(defaultOption)
 const todoForm = document.querySelector('.todo-form')
 todoForm.insertBefore(selectListElement, document.querySelector('button.make-card-btn'))

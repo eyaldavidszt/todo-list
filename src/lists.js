@@ -45,6 +45,7 @@ export function listMaker({name}) {
 
     function createDOMOption() {
         const option = document.createElement('option')
+        option.classList.add('parent-option')
         option.value = newList.name
         option.innerHTML = newList.name
         const select = document.querySelector('.list-select')

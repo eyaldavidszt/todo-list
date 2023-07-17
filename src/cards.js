@@ -5,7 +5,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         title, parent,
         description, dueDate, 
         priority, status, 
-        updateTitle, createElement
+        updateTitle, createElement, editElement
     }
 
     
@@ -18,7 +18,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
         
         const cardWrapper = document.createElement('div')
         cardWrapper.classList.add('card-wrapper')
-        cardWrapper.classList.add(`${newCard.title}`)
+        cardWrapper.setAttribute(`data-title`, `${newCard.title}`)
         const titleWrapper = document.createElement('div')
         titleWrapper.classList.add('task-title')
         titleWrapper.innerHTML = `${newCard.title}`
@@ -57,6 +57,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                 editFormInput.setAttribute('id', 'task-title-edit')
                 editFormInput.setAttribute('placeholder', 'title')
                 editFormInput.setAttribute('autocomplete', 'off')
+                editFormInput.value = `${newCard.title}`
                 //add more inputs like date::::
                 const editFormDateInput = document.createElement('input')
                 editFormDateInput.setAttribute('type', 'date')
@@ -84,22 +85,43 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                     optionHigh.innerHTML = 'High'
                     editFormPrioritySelect.appendChild(optionHigh)
                 //
+                const editFormParentList = document.createElement('select')
+                editFormParentList.setAttribute('id', 'parent-list-edit')
+                editFormParentList.setAttribute('aria-label', 'Parent list')
+                const options = document.querySelectorAll('.parent-option')
+                options.forEach(option => {
+                    const clone = option.cloneNode()
+                    clone.innerHTML = option.innerHTML
+                    clone.value = option.value
+                    editFormParentList.appendChild(clone)
+                })
+                //
                 const editFormSubmit = document.createElement('button')
                 editFormSubmit.setAttribute('class', 'edit-todo-btn')
                 editFormSubmit.innerHTML = 'submit'
-                editFormSubmit.addEventListener('click', () => {
+                editFormSubmit.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    editDialog.close()
                     //function to process form and send it into editElement() and then delete node of dialog
                     const args = {}
                     const newTitle = {title: document.querySelector('input#task-title-edit').value}
-                    args.push(newTitle)
-
-                    
+                    Object.assign(args, newTitle)
+                    const newPriority = {priority: document.querySelector('select#task-priority-edit').value}
+                    Object.assign(args, newPriority)
+                    //
+                    const newDate = {dueDate: document.querySelector('input#task-date-edit').value}
+                    Object.assign(args, newDate)
+                    const newParent = {parent: document.querySelector('select#parent-list-edit').value}
+                    Object.assign(args, newParent)
+                    //
+                    newCard.editElement(args)
                 })
             editForm.appendChild(editFormLabel)
             editForm.appendChild(editFormInput)
             editForm.appendChild(editFormDateInput)
             editForm.appendChild(editFormPrioritySelectLabel)
             editForm.appendChild(editFormPrioritySelect)
+            editForm.appendChild(editFormParentList)
             editForm.appendChild(editFormSubmit)
 
             //
@@ -115,7 +137,8 @@ export function cardMaker({title, description, dueDate, priority, status, parent
                   e.clientY < dialogDimensions.top ||
                   e.clientY > dialogDimensions.bottom
                 ) {
-                  editDialog.remove()
+                    editDialog.replaceChildren()
+                    editDialog.remove()
                 }
               })
         })
@@ -133,10 +156,20 @@ export function cardMaker({title, description, dueDate, priority, status, parent
     }
 
     function editElement(args) {
-        //edit the actual object newCard.
-        //find proper node by searching for one that has class=''newlistname''
-        //change it with inputs
-        
+        removeFromLocal()
+        const nodeToEdit = document.querySelector(`[data-title='${newCard.title}']`)
+        console.log(nodeToEdit)
+        newCard.title = args.title
+        newCard.priority = args.priority
+        newCard.dueDate = args.dueDate
+        newCard.parent = args.parent
+        appendToLocal()
+        nodeToEdit.querySelector('.task-title').textContent = newCard.title
+        nodeToEdit.querySelector('.due-date').textContent = newCard.dueDate
+        nodeToEdit.querySelector('.priority').textContent = newCard.priority
+        nodeToEdit.querySelector('.parent').textContent = newCard.parent
+        nodeToEdit.setAttribute('data-title', `${newCard.title}`)
+
     }
 
 
@@ -145,7 +178,7 @@ export function cardMaker({title, description, dueDate, priority, status, parent
             title: newCard.title,
             parent: newCard.parent, 
             dueDate: newCard.dueDate,
-            priority
+            priority: newCard.priority
 
         }))
     }
