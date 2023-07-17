@@ -25,11 +25,6 @@ openDialogButton.addEventListener('click', () => {
     dialog.showModal()
 })
 
-const closeDialogButton = document.querySelector("[data-close-modal")
-closeDialogButton.addEventListener('click', () => {
-    dialog.close()
-})
-
 dialog.addEventListener("click", e => {
     const dialogDimensions = dialog.getBoundingClientRect()
     if (
